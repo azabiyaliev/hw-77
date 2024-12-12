@@ -42,7 +42,7 @@ const AddForm = () => {
     e.preventDefault();
     try {
       if(form.message.trim().length === 0) {
-        toast.error("Fill in all fields");
+        toast.error("Fill in message field");
         setForm(initialForm);
       } else {
         await dispatch(fetchPostNote({...form}));

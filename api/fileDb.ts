@@ -9,7 +9,7 @@ const fileDb = {
     async init() {
         try {
             const noteContent = await fs.readFile(fileName);
-            data = JSON.parse(noteContent.toString());
+            data = JSON.parse(noteContent.toString()) as INote[];
         } catch (e) {
             console.error(e);
         }

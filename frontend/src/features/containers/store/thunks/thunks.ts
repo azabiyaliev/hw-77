@@ -22,6 +22,6 @@ export const fetchPostNote = createAsyncThunk<void, INote>(
 export const fetchNotes = createAsyncThunk<IResponseNote[], void>(
   "notes/fetchNotes",
   async () => {
-    const response = await axiosAPI.get<IResponseNote[]>("notes");
+    const response = await axiosAPI.get<IResponseNote[]>("/notes");
     return response.data || [];
 });

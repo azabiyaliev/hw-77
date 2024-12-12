@@ -25,7 +25,6 @@ notesRouter.post("/", imagesUpload.single('image'), async (req, res) => {
 
 notesRouter.get("/", async (_req, res) => {
     const notes = await fileDb.getItems();
-    console.log(notes);
     res.send(notes);
 });
 
