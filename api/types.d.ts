@@ -1,8 +1,8 @@
-export interface IMessage {
+export interface INote {
     id: string;
     author?: string;
     message: string;
-    image?: string;
+    image: string | null;
 }
 
-export type IMessageWithDateTime = Omit<IMessage, "id">
+export type INoteWithId = Omit<INote, "id">

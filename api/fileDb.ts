@@ -1,15 +1,15 @@
 import {promises as fs} from "fs";
-import {IMessage, IMessageWithDateTime} from "./types";
+import {INote, INoteWithId} from "./types";
 import crypto from "crypto";
 
 const fileName = `./db.json`;
-let data: IMessage [] = [];
+let data: INote [] = [];
 
 const fileDb = {
     async init() {
         try {
-            const messageContent = await fs.readFile(fileName);
-            data = JSON.parse(messageContent.toString());
+            const noteContent = await fs.readFile(fileName);
+            data = JSON.parse(noteContent.toString());
         } catch (e) {
             console.error(e);
         }
@@ -18,12 +18,12 @@ const fileDb = {
         return data;
     },
 
-    async addItem(item: IMessageWithDateTime) {
+    async addItem(item: INoteWithId) {
         const id = crypto.randomUUID();
-        const message = {id, ...item};
-        data.push(message);
+        const note = {id, ...item};
+        data.push(note);
         await this.save();
-        return message;
+        return note;
     },
     async save() {
         return fs.writeFile(fileName, JSON.stringify(data));
